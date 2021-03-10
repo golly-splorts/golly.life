@@ -23,11 +23,17 @@
      * Handle the case of an error, tell the user something is wrong
      */
     error : function(mode) {
+
       // Hide elements
-      this.loadingElem.classList.add('invisible');
+      this.loading(false);
+
       for (var c in this.containers) {
-        var elem = document.getElementById(this.containers[c]);
-        elem.classList.add('invisible');
+        try {
+          var elem = document.getElementById(this.containers[c]);
+          elem.classList.add('invisible');
+        } catch (e) {
+          // do nothing
+        }
       }
 
       // Show error elements
@@ -38,9 +44,19 @@
     /**
      * Show the loading message while loading API data.
      */
-    loading : function() {
-      this.loadingElem = document.getElementById('container-loading');
-      this.loadingElem.classList.remove('invisible');
+    loading : function(show = true) {
+      var loadingMessages = document.getElementsByClassName("loading-message");
+      var m;
+      for (m = 0; m < loadingMessages.length; m++) {
+        var elem = loadingMessages[m];
+        if (show) {
+          // Reveal the loading message
+          elem.classList.remove('invisible');
+        } else {
+          // Remove the loading message
+          elem.remove();
+        }
+      }
     },
 
     /**
@@ -49,25 +65,28 @@
     populateMapCards : function() {
 
       // get current day/season info from API /today
-      let url = this.baseApiUrl + '/today';
+      let url = this.baseApiUrl + '/mode';
       fetch(url)
       .then(res => res.json())
-      .then((todayApiResult) => {
+      .then((modeApiResult) => {
 
-        if (todayApiResult[0]==-1) {
-          this.season0 = 1;
+        if (!modeApiResult.hasOwnProperty('season')) {
+          throw "Could not find required property (season) in API /mode response";
         } else {
-          this.season0 = todayApiResult[0];
+          this.season0 = modeApiResult.season;
         }
+
+        this.loading(false);
 
         var mapRowElem = document.getElementById('row-maps');
 
-        let mapsUrl = this.baseApiUrl + '/maps';
+        let mapsUrl = this.baseApiUrl + '/maps/' + this.season0;
         fetch(mapsUrl)
         .then(res => res.json())
         .then((mapsApiResult) => {
 
-          this.loadingElem.classList.add('invisible');
+          this.loading(false);
+
           var mapsContainer = document.getElementById('container-maps');
           mapsContainer.classList.remove('invisible');
 
@@ -123,27 +142,17 @@
             var iNew;
             for (iNew = 0; iNew < newBadgeElems.length; iNew++) {
               var newBadgeElem = newBadgeElems[iNew];
+              var show = false;
               if (thisMap.hasOwnProperty('mapStartSeason')) {
-                console.log(thisMap.mapStartSeason - this.season0);
-                if ((this.season0 - thisMap.mapStartSeason) <= 2) {
-                  newBadgeElem.classList.remove('invisible');
-                } else {
-                  newBadgeElem.remove();
+                if (thisMap.mapStartSeason <= this.season0) {
+                  if ((this.season0 - thisMap.mapStartSeason) <= 2) {
+                    show = true;
+                    newBadgeElem.classList.remove('invisible');
+                  }
                 }
               }
-            }
-
-            // Make retired label visible if map end date >= current season
-            var retBadgeElems = mapCard.getElementsByClassName('map-badge-retired');
-            var iRet;
-            for (iRet = 0; iRet < retBadgeElems.length; iRet++) {
-              var retBadgeElem = retBadgeElems[iRet];
-              if (thisMap.hasOwnProperty('mapEndSeason')) {
-                if (thisMap.mapEndSeason <= this.season0) {
-                  retBadgeElem.classList.remove('invisible');
-                } else {
-                  retBadgeElem.remove();
-                }
+              if (!show) {
+                newBadgeElem.remove();
               }
             }
 
@@ -168,20 +177,20 @@
             for (iS = 0; iS < simElems.length; iS++) {
               var simElem = simElems[iS];
               if (thisMap.hasOwnProperty('patternName')) {
-                simElem.setAttribute('href', this.baseUIUrl + '/simulator/index.html?patternName=' + thisMap.patternName);
+                simElem.setAttribute('href', this.baseUIUrl + '/simulator/index.html?patternName=' + thisMap.patternName + '&rows=200&cols=240');
               }
             }
-
           }
-
         })
         .catch(err => {
+          console.log("Encountered an error calling the /maps API endpoint");
           console.log(err);
           this.error(-1);
         }); // end API /maps
 
       })
       .catch(err => {
+        console.log("Encountered an error calling the /mode API endpoint");
         console.log(err);
         this.error(-1);
       });
