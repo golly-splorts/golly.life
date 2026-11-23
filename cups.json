@@ -1,0 +1,28 @@
+{
+  "editions": ["ii", "iii", "iv", "v", "vi", "vii", "viii"],
+  "series": [
+    {
+      "name": "Hellmouth {N} Cup",
+      "host": "{n}.golly.life",
+      "logo": "img/hellmouthcup.png",
+      "accent": "#e6e6e6",
+      "before": [
+        {"name": "Hellmouth Cup", "host": "hellmouth.golly.life", "logo": "img/hellmouthcup.png", "accent": "#e6e6e6"},
+        {"name": "Toroidal Cup",  "host": "toroidal.golly.life",  "logo": "img/toroidalcup.png",  "accent": "#76d6ff"},
+        {"name": "Rainbow Cup",   "host": "rainbow.golly.life",   "logo": "img/rainbowcup.png",   "accent": "#ff9500"},
+        {"name": "Klein Cup",     "host": "klein.golly.life",     "logo": "img/kleincup.png",     "accent": "#76d6ff"}
+      ]
+    },
+    {
+      "name": "Star {N} Cup",
+      "host": "star.{n}.golly.life",
+      "logo": "img/starcup.png",
+      "accent": "#76d6ff",
+      "before": [
+        {"name": "Pseudo Cup",    "host": "pseudo.golly.life",    "logo": "img/pseudocup.png",    "accent": "#76d6ff"},
+        {"name": "Dragon Cup",    "host": "dragon.golly.life",    "logo": "img/dragoncup.png",    "accent": "#ff9500"},
+        {"name": "Star Cup",      "host": "star.golly.life",      "logo": "img/starcup.png",      "accent": "#76d6ff"}
+      ]
+    }
+  ]
+}
