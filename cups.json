@@ -1,4 +1,9 @@
 {
+  "team_colors": [
+    "#f2c57c", "#a0e7e5", "#00cc44", "#3e92cc", "#f08700", "#b0b0b0", "#bb0000", "#e86215",
+    "#d41199", "#e7d7c1", "#ffb627", "#ff66cc", "#9963ab", "#daed20", "#aa8040", "#53917e",
+    "#e8a0e7", "#697a21", "#ff1717", "#fefe67", "#ef6f6c", "#e7a0e8", "#0dab76"
+  ],
   "editions": ["ii", "iii", "iv", "v", "vi", "vii", "viii"],
   "series": [
     {

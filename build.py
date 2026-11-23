@@ -72,6 +72,7 @@ def render(data):
         "{{LATEST_NUMERAL}}": escape(latest.upper()),
         "{{LATEST}}": latest_html,
         "{{EARLIER}}": earlier_html,
+        "{{TEAM_COLORS}}": escape(" ".join(data.get("team_colors", []))),
     }.items():
         page = page.replace(key, val)
     return page
@@ -91,6 +92,7 @@ def main():
 
     data = json.loads((HERE / "cups.json").read_text())
     print(f"latest edition: {data['editions'][-1].upper()}")
+    print(f"team colors: {len(data.get('team_colors', []))}")
     print(f"editions: {', '.join(n.upper() for n in data['editions'])}")
     for s in data["series"]:
         print(f"before {s['name'].replace('{N} ', '')}: {', '.join(c['name'] for c in s.get('before', []))}")

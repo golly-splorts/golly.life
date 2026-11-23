@@ -1,15 +1,36 @@
 // Two-team Game of Life behind the hero: B3/S23, a newborn cell takes its parents' majority color.
+// Each seed pits two random team colors (data-colors on the canvas) against each other, faded toward gray.
 (function () {
   var canvas = document.getElementById('life');
   if (!canvas || !canvas.getContext) return;
   var ctx = canvas.getContext('2d');
   var CELL = 10, TICK_MS = 110, RESEED_GENS = 600;
-  var COLORS = [null, 'rgba(230, 230, 230, 0.55)', 'rgba(118, 214, 255, 0.6)'];
+  var PALETTE = (canvas.getAttribute('data-colors') || '').split(/\s+/).filter(function (c) {
+    return /^#[0-9a-f]{6}$/i.test(c);
+  });
+  if (PALETTE.length < 2) PALETTE = ['#e6e6e6', '#76d6ff'];
+  var FADE_TO = 230, FADE = 0.5, ALPHA = 0.55;
+  var COLORS = [null, null, null];
+
+  function faded(hex) {
+    var rgb = [1, 3, 5].map(function (i) {
+      return Math.round(parseInt(hex.substr(i, 2), 16) * (1 - FADE) + FADE_TO * FADE);
+    });
+    return 'rgba(' + rgb.join(', ') + ', ' + ALPHA + ')';
+  }
+
+  function pickTeams() {
+    var a = Math.floor(Math.random() * PALETTE.length);
+    var b = (a + 1 + Math.floor(Math.random() * (PALETTE.length - 1))) % PALETTE.length;
+    COLORS[1] = faded(PALETTE[a]);
+    COLORS[2] = faded(PALETTE[b]);
+  }
   var cols, rows, grid, next, gen, timer;
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function seed() {
     gen = 0;
+    pickTeams();
     for (var i = 0; i < grid.length; i++) {
       grid[i] = Math.random() < 0.28 ? (Math.random() < 0.5 ? 1 : 2) : 0;
     }
