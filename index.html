@@ -1,471 +1,80 @@
 <!DOCTYPE html>
-<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<meta content="utf-8" http-equiv="encoding">
 <html lang="en">
 <head>
-
-    <title>Golly</title>
-    <meta charset="utf-8" />
-
-    <script>
-var baseApiUrl = 'https://cloud.hellmouth.golly.life';
-var baseUIUrl  = 'https://golly.life';
-    </script>
-
-    <!--
-    CSS styles
-    -->
-    <link href="https://golly.life/theme/css/slate.css"  rel="stylesheet" type="text/css">
-    <link href="https://golly.life/theme/css/custom.css" rel="stylesheet" type="text/css">
-    <link href="https://golly.life/theme/css/fa.css"     rel="stylesheet" type="text/css"/>
-
-    <link rel="icon" type="image/png" href="https://golly.life/theme/img/golly-favicon.png">
-
-    <!--
-        Versions:
-        golly-pelican: 299.1.dev0
-        golly-pelican-theme: 401.0
-    -->
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>golly.life</title>
+  <meta name="description" content="Golly: competitive cellular automata. Every Golly cup in one place.">
+  <link rel="icon" type="image/png" href="theme/img/golly-favicon.png">
+  <link rel="stylesheet" href="theme/css/home.css">
 </head>
-<body id="index">
+<body>
 
-<!-- Navigation -->
-<div id="navbar-div-top-level" class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
+<header class="topbar">
+  <a class="brand" href="./">
+    <img src="theme/img/golly-favicon.png" alt="" width="24" height="24">
+    Golly
+  </a>
+  <nav>
+    <a href="#cups">Cups</a>
+    <a href="https://wiki.golly.life">Wiki</a>
+  </nav>
+</header>
 
-  <div id="navbar-div-container" class="container">
-
-    <a href="https://golly.life/" class="navbar-brand">
-      <img class="navbar-brand-logo" type="image/png" src="https://golly.life/theme/img/golly-favicon.png" alt="logo" />
-      Golly
-    </a>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- this is the non-brand portion of the nav bar -->
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-
-      <!-- begin list of navbar buttons -->
-      <ul class="navbar-nav">
-
-        <!-- cups -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">
-              Cups <span class="caret"></span>
-          </a>
-          <div id="navbar-cups-dropdown-menu" class="dropdown-menu" aria-labelledby="themes">
-            <a class="dropdown-item" href="https://hellmouth.golly.life">Hellmouth Cup</a>
-            <a class="dropdown-item" href="https://toroidal.golly.life">Toroidal Cup</a>
-            <a class="dropdown-item" href="https://pseudo.golly.life">Pseudo Cup</a>
-            <a class="dropdown-item" href="https://rainbow.golly.life">Rainbow Cup</a>
-            <a class="dropdown-item" href="https://dragon.golly.life">Dragon Cup</a>
-            <a class="dropdown-item" href="https://klein.golly.life">Klein Cup</a>
-            <a class="dropdown-item" href="https://star.golly.life">Star Cup</a>
-            <a class="dropdown-item" href="https://ii.golly.life">Hellmouth II Cup</a>
-            <a class="dropdown-item" href="https://star.ii.golly.life">Star II Cup</a>
-            <a class="dropdown-item" href="https://iii.golly.life">Hellmouth III Cup</a>
-            <a class="dropdown-item" href="https://star.iii.golly.life">Star III Cup</a>
-            <a class="dropdown-item" href="https://iv.golly.life">Hellmouth IV Cup</a>
-            <a class="dropdown-item" href="https://star.iv.golly.life">Star IV Cup</a>
-            <a class="dropdown-item" href="https://v.golly.life">Hellmouth V Cup</a>
-            <a class="dropdown-item" href="https://star.v.golly.life">Star V Cup</a>
-            <a class="dropdown-item" href="https://vi.golly.life">Hellmouth VI Cup</a>
-            <a class="dropdown-item" href="https://star.vi.golly.life">Star VI Cup</a>
-          </div>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="https://wiki.golly.life">Golly Wiki</a>
-        </li>
-
-      </ul>
-    </div>
+<section class="hero">
+  <canvas id="life" aria-hidden="true"></canvas>
+  <div class="hero-text">
+    <h1>golly.life</h1>
+    <p>competitive cellular automata</p>
   </div>
-</div>
+</section>
 
+<main id="cups">
 
-<div class="container" id="container-maps">
-
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Hellmouth VI Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/hellmouthcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://vi.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            vi.golly.life
-          </a>
-        </div>
-      </div>
-
+  <section class="block">
+    <h2 class="block-title">Current <span class="block-numeral">VIII</span></h2>
+    <div class="latest">
+<a class="cup cup-feature" href="https://viii.golly.life" style="--accent: #e6e6e6"><img class="cup-logo" src="img/hellmouthcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Hellmouth VIII Cup</span><span class="cup-host">viii.golly.life</span></span></a>
+<a class="cup cup-feature" href="https://star.viii.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/starcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Star VIII Cup</span><span class="cup-host">star.viii.golly.life</span></span></a>
     </div>
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Star VI Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/starcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://star.vi.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            star.vi.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Hellmouth V Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/hellmouthcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://v.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            v.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Star V Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/starcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://star.v.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            star.v.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Hellmouth IV Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/hellmouthcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://iv.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            iv.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Star IV Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/starcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://star.iv.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            star.iv.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Hellmouth III Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/hellmouthcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://iii.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            iii.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Star III Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/starcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://star.iii.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            star.iii.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Hellmouth II Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/hellmouthcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://ii.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            ii.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Star II Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/starcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://star.ii.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            star.ii.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Klein Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/kleincup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://klein.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            klein.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Star Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/starcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://star.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            star.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Rainbow Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/rainbowcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://rainbow.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            rainbow.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Dragon Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/dragoncup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://dragon.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            dragon.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Toroidal Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/toroidalcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://toroidal.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            toroidal.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Pseudo Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/pseudocup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://pseudo.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            pseudo.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="row">
-
-    <div class="col-md-4 map-card-container">
-
-      <div class="card text-white bg-primary mb-4 map-card">
-        <div class="card-header map-card-header"><span class="map-card-map-name">Hellmouth Cup</span></div>
-        <div class="card-body">
-          <img class="map-card-image" width="100%" src="img/hellmouthcup.png" />
-          <p class="card-text map-card-description-text"><span class="map-card-description"></span></p>
-        </div>
-        <div class="map-card-simulate justify-content-lg-center text-center">
-          <a href="https://hellmouth.golly.life" role="button" class="btn btn-primary btn-sm btn-success">
-            hellmouth.golly.life
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-<noscript>
-  <div class="container" id="container-noscript">
-    <div class="row text-center landing-header">
-      <div class="col-md-12">
-        <h2 class="text-danger">You must have Javascript enabled to view this site.</h2>
-      </div>
-    </div>
-  </div>
-</noscript>
-
-
-<script type="text/javascript" src="https://golly.life/theme/js/geturl.js"></script>
-<script type="text/javascript" src="https://golly.life/theme/js/tables.js"></script>
-<script type="text/javascript" src="https://golly.life/theme/js/navbar.js"></script>
-<script type="text/javascript" src="https://golly.life/theme/js/jquery.min.js"></script>
-<script type="text/javascript" src="https://golly.life/theme/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="https://golly.life/theme/js/jquery-svg.js"></script>
-
-<footer id="contentinfo" class="body">
-    <div class="text-center">
-    <p>Golly is a product of the Metablaseball Research Laboratory at Hellmouth Community College</p>
-
-    <p>Golly.Life on Twitter: <a href="https://twitter.com/gollysplorts">Golly Splorts</a></p>
-
-    <p>Golly.Life Chief Architect: <a href="https://twitter.com/ch4zm_of_hell">Ch4zm of Hellmouth</a></p>
-
-    <p>Golly Commissioner: Rubrix Helicopter</p>
-
-    <p>
-        Licensed under the <a rel="license" href="https://mit-license.org/">MIT License</a> - <a href="https://github.com/golly-splorts/golly-pelican/blob/main/ATTRIBUTION">Attribution</a>
-    </p>
-    <p>
-    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="block-title">Past cups</h2>
+    <ol class="editions">
+<li class="edition"><span class="edition-numeral">VII</span><div class="edition-cups"><a class="cup cup-chip" href="https://vii.golly.life" style="--accent: #e6e6e6"><img class="cup-logo" src="img/hellmouthcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Hellmouth VII Cup</span><span class="cup-host">vii.golly.life</span></span></a><a class="cup cup-chip" href="https://star.vii.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/starcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Star VII Cup</span><span class="cup-host">star.vii.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral">VI</span><div class="edition-cups"><a class="cup cup-chip" href="https://vi.golly.life" style="--accent: #e6e6e6"><img class="cup-logo" src="img/hellmouthcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Hellmouth VI Cup</span><span class="cup-host">vi.golly.life</span></span></a><a class="cup cup-chip" href="https://star.vi.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/starcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Star VI Cup</span><span class="cup-host">star.vi.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral">V</span><div class="edition-cups"><a class="cup cup-chip" href="https://v.golly.life" style="--accent: #e6e6e6"><img class="cup-logo" src="img/hellmouthcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Hellmouth V Cup</span><span class="cup-host">v.golly.life</span></span></a><a class="cup cup-chip" href="https://star.v.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/starcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Star V Cup</span><span class="cup-host">star.v.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral">IV</span><div class="edition-cups"><a class="cup cup-chip" href="https://iv.golly.life" style="--accent: #e6e6e6"><img class="cup-logo" src="img/hellmouthcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Hellmouth IV Cup</span><span class="cup-host">iv.golly.life</span></span></a><a class="cup cup-chip" href="https://star.iv.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/starcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Star IV Cup</span><span class="cup-host">star.iv.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral">III</span><div class="edition-cups"><a class="cup cup-chip" href="https://iii.golly.life" style="--accent: #e6e6e6"><img class="cup-logo" src="img/hellmouthcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Hellmouth III Cup</span><span class="cup-host">iii.golly.life</span></span></a><a class="cup cup-chip" href="https://star.iii.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/starcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Star III Cup</span><span class="cup-host">star.iii.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral">II</span><div class="edition-cups"><a class="cup cup-chip" href="https://ii.golly.life" style="--accent: #e6e6e6"><img class="cup-logo" src="img/hellmouthcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Hellmouth II Cup</span><span class="cup-host">ii.golly.life</span></span></a><a class="cup cup-chip" href="https://star.ii.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/starcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Star II Cup</span><span class="cup-host">star.ii.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral"></span><div class="edition-cups"><a class="cup cup-chip" href="https://klein.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/kleincup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Klein Cup</span><span class="cup-host">klein.golly.life</span></span></a><a class="cup cup-chip" href="https://star.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/starcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Star Cup</span><span class="cup-host">star.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral"></span><div class="edition-cups"><a class="cup cup-chip" href="https://rainbow.golly.life" style="--accent: #ff9500"><img class="cup-logo" src="img/rainbowcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Rainbow Cup</span><span class="cup-host">rainbow.golly.life</span></span></a><a class="cup cup-chip" href="https://dragon.golly.life" style="--accent: #ff9500"><img class="cup-logo" src="img/dragoncup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Dragon Cup</span><span class="cup-host">dragon.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral"></span><div class="edition-cups"><a class="cup cup-chip" href="https://toroidal.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/toroidalcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Toroidal Cup</span><span class="cup-host">toroidal.golly.life</span></span></a><a class="cup cup-chip" href="https://pseudo.golly.life" style="--accent: #76d6ff"><img class="cup-logo" src="img/pseudocup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Pseudo Cup</span><span class="cup-host">pseudo.golly.life</span></span></a></div></li>
+<li class="edition"><span class="edition-numeral"></span><div class="edition-cups"><a class="cup cup-chip" href="https://hellmouth.golly.life" style="--accent: #e6e6e6"><img class="cup-logo" src="img/hellmouthcup.png" alt="" loading="lazy"><span class="cup-text"><span class="cup-name">Hellmouth Cup</span><span class="cup-host">hellmouth.golly.life</span></span></a><span class="cup-empty"></span></div></li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <p>Golly is a product of the Metablaseball Research Laboratory at Hellmouth Community College</p>
+  <p>Golly.Life Chief Architect: <a href="https://github.com/ch4zm">Ch4zm of Hellmouth</a></p>
+  <p>Golly Commissioner: Rubrix Helicopter</p>
+  <p>Licensed under the <a rel="license" href="https://mit-license.org/">MIT License</a> - <a href="https://github.com/golly-splorts/golly-pelican/blob/main/ATTRIBUTION">Attribution</a></p>
+</footer>
+
+<script src="theme/js/home.js"></script>
 
 <!-- Default Statcounter code for Golly https://golly.life -->
-<script type="text/javascript">
+<script>
 var sc_project=12429156;
 var sc_invisible=1;
 var sc_security="5f5d6061";
 var sc_https=1;
 </script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-StatCounter" href="https://statcounter.com/" target="_blank"><img
-class="statcounter" src="https://c.statcounter.com/12429156/0/5f5d6061/1/"
-alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
-<!-- End of Statcounter Code --></footer>
+<script src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics Made Easy - StatCounter" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12429156/0/5f5d6061/1/" alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
+<!-- End of Statcounter Code -->
 </body>
 </html>
