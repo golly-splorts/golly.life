@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>golly.life</title>
+  <meta name="description" content="Golly: competitive cellular automata. Every Golly cup in one place.">
+  <link rel="icon" type="image/png" href="theme/img/golly-favicon.png">
+  <link rel="stylesheet" href="theme/css/home.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="./">
+    <img src="theme/img/golly-favicon.png" alt="" width="24" height="24">
+    Golly
+  </a>
+  <nav>
+    <a href="#cups">Cups</a>
+    <a href="https://wiki.golly.life">Wiki</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <canvas id="life" aria-hidden="true"></canvas>
+  <div class="hero-text">
+    <h1>golly.life</h1>
+    <p>competitive cellular automata</p>
+  </div>
+</section>
+
+<main id="cups">
+
+  <section class="block">
+    <h2 class="block-title">Current <span class="block-numeral">{{LATEST_NUMERAL}}</span></h2>
+    <div class="latest">
+{{LATEST}}
+    </div>
+  </section>
+
+  <section class="block">
+    <h2 class="block-title">Past cups</h2>
+    <ol class="editions">
+{{EARLIER}}
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <p>Golly is a product of the Metablaseball Research Laboratory at Hellmouth Community College</p>
+  <p>Golly.Life Chief Architect: <a href="https://github.com/ch4zm">Ch4zm of Hellmouth</a></p>
+  <p>Golly Commissioner: Rubrix Helicopter</p>
+  <p>Licensed under the <a rel="license" href="https://mit-license.org/">MIT License</a> - <a href="https://github.com/golly-splorts/golly-pelican/blob/main/ATTRIBUTION">Attribution</a></p>
+</footer>
+
+<script src="theme/js/home.js"></script>
+
+<!-- Default Statcounter code for Golly https://golly.life -->
+<script>
+var sc_project=12429156;
+var sc_invisible=1;
+var sc_security="5f5d6061";
+var sc_https=1;
+</script>
+<script src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics Made Easy - StatCounter" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/12429156/0/5f5d6061/1/" alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
+<!-- End of Statcounter Code -->
+</body>
+</html>
