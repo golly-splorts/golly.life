@@ -20,6 +20,7 @@ STATIC = {
     "home.css": "theme/css/home.css",
     "home.js": "theme/js/home.js",
 }
+STATIC.update({f"img/{p.name}": f"img/{p.name}" for p in sorted((SITE / "img").glob("*.svg"))})
 
 
 def expand(series, numeral):
@@ -111,7 +112,7 @@ def main():
 
     logos = {s["logo"] for s in data["series"]} | {c["logo"] for s in data["series"] for c in s.get("before", [])}
     for src in sorted(logos):
-        if not (OUTPUT / src).exists():
+        if not (OUTPUT / src).exists() and not (SITE / src).exists():
             print(f"  missing logo: output/{src}")
 
     if not args.write:
